@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Снежный затвор - Титаны Прогресса</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
+    
+    <style>
+        /* Делаем фон прозрачным для Reveal, чтобы видеть наш зимний градиент */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: radial-gradient(circle at center, #112238 0%, #000000 100%);
+            margin: 0;
+            overflow: hidden;
+        }
+        .reveal {
+            background: transparent;
+            z-index: 2;
+        }
+        
+        /* Холст для снега */
+        #snow-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none; /* Чтобы снег не мешал кликать по слайдам */
+        }
+
+        .reveal h1, .reveal h2, .reveal h3 {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            text-transform: none;
+            background: -webkit-linear-gradient(135deg, #ffffff 0%, #a1a1a6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 24px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .accent { color: #0A84FF; font-weight: 500; }
+        .danger { color: #FF453A; font-weight: bold; }
+
+        .reveal p, .reveal li {
+            color: #F5F5F7;
+            font-size: 0.85em;
+            line-height: 1.4;
+            text-align: left;
+        }
+        
+        .reveal ul { display: block; }
+
+        .swipe-hint {
+            font-size: 0.4em !important;
+            color: #86868B !important;
+            margin-top: 50px !important;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-align: center !important;
+        }
+
+        .image-placeholder {
+            border: 2px dashed rgba(255,255,255,0.2);
+            border-radius: 12px;
+            padding: 20px;
+            color: #888;
+            text-align: center;
+            margin: 20px 0;
+            background: rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="snow-canvas"></canvas>
+
+    <div class="reveal">
+        <div class="slides">
+            
+            <section>
+                <h1>Снеговой затвор</h1>
+                <p class="accent" style="text-align: center;">Выполнено командой Титаны Прогресса</p>
+                <p class="swipe-hint"></p>
+            </section>
+
+            <section>
+                <div class="glass-panel">
+                    <h2>Актуальность проблемы</h2>
+                    <p>В зимний период в северных и центральных регионах России на крышах зданий всегда образуются сосульки и наледь в связи со снегопадами и отрицательными температурами.</p>
+                    <p class="danger">Образование этих ледяных масс представляет серьезную опасность для людей и транспортных средств.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Наша цель</h2>
+                <div class="glass-panel" style="text-align: center;">
+                    <p style="text-align: center; font-size: 1.2em; color: #0A84FF;">Разработать способ для предотвращения образования сосулек и наледи на крышах зданий.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Теоретическая часть</h2>
+                <p>Текущие методы очистки крыш:</p>
+                <ul>
+                    <li class="fragment fade-right danger">ОПАСНО</li>
+                    <li class="fragment fade-right">ТРУДОЁМКО</li>
+                    <li class="fragment fade-right">ДОРОГОСТОЯЩЕ</li>
+                    <li class="fragment fade-right">НЕЭФФЕКТИВНО</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Практическая часть</h2>
+                <p>Снизу показан чертеж того, как наша идея выглядит на практике:</p>
+                
+                <div class="image-placeholder">
+                    <img src="chertesh.PNG" style="border-radius: 12px; max-width: 60%; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                </div>
+
+                <ul>
+                    <li class="fragment fade-up">1. Перегородка - затвор</li>
+                    <li class="fragment fade-up">2. Упругий шнур или пружина</li>
+                    <li class="fragment fade-up">3. Скользящая поверхность - водостойкая плоскость</li>
+                    <li class="fragment fade-up">4. Положение критической нагрузки - сход снега</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Прототип</h2>
+                <p>Макет нашего решения.</p>
+                
+                <div class="image-placeholder">
+                    <img src="maket.PNG" style="border-radius: 12px; max-width: 80%; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                </div>
+            </section>
+
+            <section>
+                <div class="glass-panel">
+                    <h2>Практическое обоснование</h2>
+                    <ul>
+                        <li>Безопасность</li>
+                        <li>Возможность эксплуатации на больших морозах (-40°C)</li>
+                        <li>Отсутствие негативного воздействия на окружающую среду</li>
+                        <li>Длительный срок годности (25–50 лет)</li>
+                        <li>Простота монтажа, перевозки и обслуживания</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <div class="glass-panel">
+                    <h2>Экономическое обоснование</h2>
+                    <ul>
+                        <li>Не требует затрат на электричество, обеспечение тепла</li>
+                        <li>Не требует постоянных и многочисленных услуг специалистов</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h1>Спасибо за внимание</h1>
+               <p class="accent" style="text-align: center;">Выполнено командой Титаны Прогресса</p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+    <script>
+        // Инициализация презентации
+        Reveal.initialize({
+            hash: true,
+            transition: 'convex', // Заменил анимацию на 3D-перелистывание для разнообразия
+            backgroundTransition: 'fade',
+            controls: false,
+            progress: true,
+            center: true
+        });
+
+        // Скрипт генерации падающего снега
+        const canvas = document.getElementById('snow-canvas');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+        let particles = [];
+        
+        // Создаем 150 снежинок
+        for(let i=0; i<150; i++) {
+            particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                r: Math.random() * 3 + 1, // Радиус снежинки
+                d: Math.random() * 150    // Плотность
+            });
+        }
+        
+        // Отрисовка снега
+        function draw() {
+            ctx.clearRect(0, 0, width, height);
+            ctx.fillStyle = "rgba(255, 255, 255, 0.7)";
+            ctx.beginPath();
+            for(let i=0; i<150; i++) {
+                let p = particles[i];
+                ctx.moveTo(p.x, p.y);
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI*2, true);
+            }
+            ctx.fill();
+            update();
+        }
+        
+        // Движение снега
+        let angle = 0;
+        function update() {
+            angle += 0.01;
+            for(let i=0; i<150; i++) {
+                let p = particles[i];
+                // Обновление координат
+                p.y += Math.cos(angle + p.d) + 1 + p.r/2;
+                p.x += Math.sin(angle) * 2;
+                
+                // Возврат снежинки наверх, если она упала за экран
+                if(p.x > width + 5 || p.x < -5 || p.y > height) {
+                    if(i%3 > 0) {
+                        particles[i] = {x: Math.random()*width, y: -10, r: p.r, d: p.d};
+                    } else {
+                        // Если снежинка ушла вправо
+                        if(Math.sin(angle) > 0) {
+                            particles[i] = {x: -5, y: Math.random()*height, r: p.r, d: p.d};
+                        } else {
+                            particles[i] = {x: width + 5, y: Math.random()*height, r: p.r, d: p.d};
+                        }
+                    }
+                }
+            }
+        }
+        // Запуск анимации (30 кадров в секунду)
+        setInterval(draw, 33);
+
+        // Обновление размера холста при изменении окна браузера
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>
